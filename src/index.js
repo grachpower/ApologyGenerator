@@ -1,3 +1,3 @@
-import { createApp } from 'racquetjs/src/index.js';
+import { createApp } from 'racquetjs';
 
 // createApp();

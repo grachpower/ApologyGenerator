@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/grachpower/ApologyGenerator#readme",
   "dependencies": {
-    "racquetjs": "git+https://github.com/grachpower/RacquetJS.git#v0.0.1"
+    "racquetjs": "git+https://github.com/grachpower/RacquetJS.git#v0.0.2"
   },
   "devDependencies": {
     "html-webpack-plugin": "^3.2.0",
