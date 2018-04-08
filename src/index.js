@@ -1,3 +1,8 @@
 import { createApp } from 'racquetjs';
 
-// createApp();
+import { App } from "./app/pages/app";
+
+createApp(
+    document.querySelector('div[app]'),
+    App,
+);
