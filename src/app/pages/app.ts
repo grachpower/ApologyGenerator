@@ -1,6 +1,6 @@
 import { Component } from 'racquetjs';
 
-export class App extends Component {
+export class App extends Component{
     constructor() {
         super();
     };
@@ -11,7 +11,7 @@ export class App extends Component {
      * @Override
      * @returns {string}
      */
-    createTemplate() {
+    public createTemplate() {
         return `
             <div class="header">
                 <div class="main-container">
@@ -29,7 +29,7 @@ export class App extends Component {
     /**
      * @Override
      */
-    afterViewInit() {
+    public afterViewInit(): void {
         //...
     }
 }
