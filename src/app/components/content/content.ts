@@ -42,11 +42,9 @@ export class Content extends Component {
                 this.isLoading = true;
                 this.render();
 
-                setTimeout(() => {
-                    this.apologies = this.apologiesService.generateApologies();
-                    this.isLoading = false;
-                    this.render();
-                });
+                this.apologies = this.apologiesService.generateApologies();
+                this.isLoading = false;
+                this.render();
             });
     }
 }

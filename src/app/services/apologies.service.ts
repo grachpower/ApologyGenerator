@@ -10,7 +10,9 @@ export class ApologiesService {
         const stepTwo = this.applyWords(stepOne, this.targetWords);
         const stepThree = this.applyWords(stepTwo, this.additionalWords);
 
-        return stepThree;
+        return stepThree
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 1000);
     }
 
     private applyWords(wordsInital: string[], wordsToAppy: string[]): string[] {
