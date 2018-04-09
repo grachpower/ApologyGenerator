@@ -1,4 +1,5 @@
 import { Component } from 'racquetjs';
+import './app.scss';
 
 export class App extends Component{
     constructor() {

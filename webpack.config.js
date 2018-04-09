@@ -9,7 +9,7 @@ const config = {
         filename: 'main.[hash].bundle.js',
     },
     resolve: {
-        extensions: [' ', '.html', '.ts', '.js']
+        extensions: [' ', '.html', '.ts', '.js', 'scss'],
     },
     module: {
         rules: [
@@ -20,6 +20,16 @@ const config = {
             {
                 test: /\.tsx?$/,
                 loader: 'awesome-typescript-loader',
+            },
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "sass-loader" // compiles Sass to CSS
+                }]
             }
         ]
     },
@@ -37,6 +47,8 @@ const config = {
         hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
         https: false, // true for self-signed, object for cert authority
         noInfo: true, // only errors & warns on hot reload
+        hot: true,
+        inline: true,
         // ...
     },
 };
