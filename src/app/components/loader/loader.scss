@@ -1,0 +1,111 @@
+.page-preloader {
+  width: 50px;
+  height: 50px;
+  z-index: 998;
+  background-color: #fff;
+}
+
+.preloader__item {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #fd5433;
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  z-index: 999;
+}
+
+.preloader__item1 {
+  animation-name: orbit-top-left;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-delay: 0s;
+}
+
+.preloader__item2 {
+  animation-name: orbit-top-right;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-delay: 0s;
+}
+
+.preloader__item3 {
+  animation-name: orbit-down-left;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-delay: 0s;
+}
+
+.preloader__item4 {
+  animation-name: orbit-down-right;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-delay: 0s;
+}
+
+@keyframes orbit-top-left {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg) translate3d(0, 0, 0);
+  }
+  20% {
+    transform: rotate3d(0, 0, 1, 0deg) translate3d(150%, 150%, 0);
+  }
+  80% {
+    transform: rotate3d(0, 0, 1, 360deg) translate3d(150%, 150%, 0);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes orbit-top-right {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg) translate3d(0, 0, 0);
+  }
+  20% {
+    transform: rotate3d(0, 0, 1, 0deg) translate3d(150%, -150%, 0);
+  }
+  80% {
+    transform: rotate3d(0, 0, 1, 360deg) translate3d(150%, -150%, 0);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes orbit-down-left {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg) translate3d(0, 0, 0);
+  }
+  20% {
+    transform: rotate3d(0, 0, 1, 0deg) translate3d(-150%, -150%, 0);
+  }
+  80% {
+    transform: rotate3d(0, 0, 1, 360deg) translate3d(-150%, -150%, 0);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes orbit-down-right {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg) translate3d(0, 0, 0);
+  }
+  20% {
+    transform: rotate3d(0, 0, 1, 0deg) translate3d(-150%, 150%, 0);
+  }
+  80% {
+    transform: rotate3d(0, 0, 1, 360deg) translate3d(-150%, 150%, 0);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg) translate3d(0, 0, 0);
+  }
+}

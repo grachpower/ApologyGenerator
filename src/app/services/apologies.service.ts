@@ -18,6 +18,10 @@ export class ApologiesService {
             .reduce((acc, initialWord) => {
                 const words =  wordsToAppy
                     .reduce((acc, currentWord) => {
+                        if (initialWord === currentWord) {
+                            return [...acc];
+                        }
+
                         return [...acc, `${initialWord} ${currentWord}`];
                     }, []);
 
