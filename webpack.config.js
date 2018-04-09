@@ -8,6 +8,9 @@ const config = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.[hash].bundle.js',
     },
+    resolve: {
+        extensions: [' ', '.html', '.ts', '.js']
+    },
     module: {
         rules: [
             {
@@ -16,7 +19,7 @@ const config = {
             },
             {
                 test: /\.tsx?$/,
-                use: 'awesome-typescript-loader',
+                loader: 'awesome-typescript-loader',
             }
         ]
     },
