@@ -12,6 +12,10 @@ export class ApologiesList extends Component {
                     ? `<h2>Тут будут ваши извинения</h2>`
                     : this.apologies.map(apology => `<li>${apology}</li>`).join('')
                 }
+                ${this.apologies.length > 0
+                    ? `<h3>НУ ТЫ И МУДАК РАЗ СТОЛЬКО ИЗВИНЯЕШЬСЯ</h3>`
+                    : ``
+                }
             </ul>
         `;
     }
