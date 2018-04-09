@@ -8,7 +8,10 @@ export class ApologiesList extends Component {
     public createTemplate() {
         return `
             <ul>
-                ${this.apologies.map(apology => `<li>${apology}</li>`).join('')}
+                ${this.apologies.length === 0
+                    ? `<h2>Тут будут ваши извинения</h2>`
+                    : this.apologies.map(apology => `<li>${apology}</li>`).join('')
+                }
             </ul>
         `;
     }
@@ -16,11 +19,10 @@ export class ApologiesList extends Component {
     /**
      * @Override
      */
-    public afterViewInit(): void {
-        //...
-    }
+    public afterViewInit(): void {}
 
-    public setHandlers(): void {
-        //..
-    }
+    /**
+     * @Override
+     */
+    public setHandlers(): void {}
 }
