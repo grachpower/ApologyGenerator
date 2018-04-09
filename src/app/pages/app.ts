@@ -1,6 +1,9 @@
 import { Component } from 'racquetjs';
 import './app.scss';
 
+import { Header } from "../components/header/header";
+import { Content } from "../components/content/content";
+
 export class App extends Component{
     constructor() {
         super();
@@ -14,16 +17,8 @@ export class App extends Component{
      */
     public createTemplate() {
         return `
-            <div class="header">
-                <div class="main-container">
-                    <h1 class="header__title">Get it done</h1>
-                </div>
-                <main class="content">
-                    <div class="main-container">
-                        
-                    </div>
-                </main>
-            </div>
+             ${this.createChild(new Header())}
+             ${this.createChild(new Content())}
         `;
     }
 
@@ -32,5 +27,9 @@ export class App extends Component{
      */
     public afterViewInit(): void {
         //...
+    }
+
+    public setHandlers(): void {
+        //..
     }
 }

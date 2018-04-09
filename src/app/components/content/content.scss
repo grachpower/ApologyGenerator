@@ -1,0 +1,14 @@
+.content {
+  padding-top: 2rem;
+}
+
+.generate-button {
+  border: none;
+  background-color: #4e50ee;
+  color: #fff;
+  padding: .5rem 1rem;
+
+   &:hover, &:focus {
+     background-color: #2832ee;
+   }
+}

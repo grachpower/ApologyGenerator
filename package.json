@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server --config webpack.config.js --hot --open"
+    "start": "webpack-dev-server --config webpack.config.js --hot --open --watch"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
   "homepage": "https://github.com/grachpower/ApologyGenerator#readme",
   "dependencies": {
     "awesome-typescript-loader": "^3.4.1",
-    "racquetjs": "^0.1.0"
+    "racquetjs": "^0.1.1",
+    "ts-loader": "^4.2.0"
   },
   "devDependencies": {
     "css-loader": "^0.28.11",
