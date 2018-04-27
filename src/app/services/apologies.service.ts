@@ -5,31 +5,55 @@ export class ApologiesService {
     private targetWords = ApologiesDictionary.TARGET;
     private additionalWords = ApologiesDictionary.ADDITIONAL;
 
-    public generateApologies(): string[] {
-        const stepOne = this.applyWords(this.mainWords, this.mainWords);
-        const stepTwo = this.applyWords(stepOne, this.targetWords);
-        const stepThree = this.applyWords(stepTwo, this.additionalWords);
-
-        return stepThree
-            .sort(() => Math.random() - 0.5)
-            .slice(0, 1000);
+    public generateApologies(): Promise<string[]> {
+        return new Promise(res => {
+            setTimeout(() => {
+               const apologies = this.applyWords(this.mainWords, this.mainWords)
+                   .then(stepOne => this.applyWords(stepOne, this.targetWords))
+                   .then(stepTwo => this.applyWords(stepTwo, this.additionalWords))
+                   .then(stepThree => stepThree
+                       .sort(() => Math.random() - 0.5)
+                       .slice(0, 1000));
+               res(apologies);
+            });
+        });
     }
 
-    private applyWords(wordsInital: string[], wordsToAppy: string[]): string[] {
-        const newWords = wordsInital
+    private  applyWords(wordsInital: string[], wordsToAppy: string[]): Promise<string[]> {
+        return new Promise(res => {
+            setTimeout(() => {
+                Promise.all(this.firstLevel(wordsInital, wordsToAppy))
+                    .then((wordsArrays: string[][]) => {
+                        const newWords = wordsArrays
+                            .reduce((acc: string[], curr: string[]) => [...acc, ...curr], []);
+
+                        res([...wordsInital, ...newWords]);
+                    })
+            }, 0);
+        });
+    }
+
+    private firstLevel(wordsInital: string[], wordsToAppy: string[]): Promise<string[]>[] {
+        return wordsInital
             .reduce((acc, initialWord) => {
-                const words =  wordsToAppy
-                    .reduce((acc, currentWord) => {
-                        if (initialWord === currentWord) {
-                            return [...acc];
-                        }
-
-                        return [...acc, `${initialWord} ${currentWord}`];
-                    }, []);
-
-                return [...acc, ...words];
+                return [...acc, this.innerWords(wordsToAppy, initialWord)];
             }, []);
+    }
 
-        return [...wordsInital, ...newWords];
+    private innerWords(wordsToAppy: string[], initialWord: string): Promise<string[]> {
+        return new Promise(res => {
+            setTimeout(() => {
+               const words = wordsToAppy
+                   .reduce((acc, currentWord) => {
+                       if (initialWord === currentWord) {
+                           return [...acc];
+                       }
+
+                       return [...acc, `${initialWord} ${currentWord}`];
+                   }, []);
+
+               res(words);
+            }, 0)
+        })
     }
 }

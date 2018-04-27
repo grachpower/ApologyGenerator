@@ -12,6 +12,7 @@
     "strictNullChecks": false,
     "lib": [
       "dom",
+      "webworker",
       "es2015",
       "es2017"
     ],

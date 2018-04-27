@@ -26,7 +26,8 @@
   "homepage": "https://github.com/grachpower/ApologyGenerator#readme",
   "dependencies": {
     "awesome-typescript-loader": "^3.4.1",
-    "racquetjs": "^0.1.1",
+    "file-loader": "^1.1.11",
+    "racquetjs": "^0.1.2",
     "ts-loader": "^4.2.0"
   },
   "devDependencies": {
