@@ -39,12 +39,15 @@ export class Content extends Component {
     public setHandlers(): void {
         const buttonListener = document.querySelector(`[${this.getControlHashByName('generate-button')}]`)
             .addEventListener('click', () => {
-                this.isLoading = true;
-                this.render();
+                setTimeout( () => this.isLoading = true);
+                setTimeout( () => this.apologies = []);
+                setTimeout(() => this.render(), 0);
 
-                this.apologies = this.apologiesService.generateApologies();
-                this.isLoading = false;
-                this.render();
+                this.apologiesService
+                    .generateApologies()
+                    .then(apologies => this.apologies = apologies)
+                    .then(_ => this.isLoading = false)
+                    .then(_ => this.render());
             });
     }
 }
