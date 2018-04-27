@@ -24,8 +24,11 @@ export class ApologiesService {
             setTimeout(() => {
                 Promise.all(this.firstLevel(wordsInital, wordsToAppy))
                     .then((wordsArrays: string[][]) => {
-                        const newWords = wordsArrays
-                            .reduce((acc: string[], curr: string[]) => [...acc, ...curr], []);
+                        const newWords = [];
+
+                        wordsArrays.forEach((curr: string[]) => {
+                            curr.forEach(item => newWords.push(item));
+                        });
 
                         res([...wordsInital, ...newWords]);
                     })
@@ -34,26 +37,41 @@ export class ApologiesService {
     }
 
     private firstLevel(wordsInital: string[], wordsToAppy: string[]): Promise<string[]>[] {
-        return wordsInital
-            .reduce((acc, initialWord) => {
-                return [...acc, this.innerWords(wordsToAppy, initialWord)];
-            }, []);
+        const words: Promise<string[]>[] = [];
+
+        wordsInital.forEach(initialWord => {
+            const promise = new Promise<string[]>(res => {
+                setTimeout(_ => {
+                    const prom: Promise<string>[] = this.innerWords(wordsToAppy, initialWord);
+
+                    Promise.all(prom)
+                        .then((words: string[]) => res(words));
+                }, 0);
+            });
+
+            words.push(promise);
+        });
+
+        return words;
     }
 
-    private innerWords(wordsToAppy: string[], initialWord: string): Promise<string[]> {
-        return new Promise(res => {
-            setTimeout(() => {
-               const words = wordsToAppy
-                   .reduce((acc, currentWord) => {
-                       if (initialWord === currentWord) {
-                           return [...acc];
-                       }
+    private innerWords(wordsToAppy: string[], initialWord: string): Promise<string>[] {
+        const words = [];
 
-                       return [...acc, `${initialWord} ${currentWord}`];
-                   }, []);
+        wordsToAppy.forEach(currentWord => {
+            const promise =  new Promise<string>(res => {
+                setTimeout(_ => {
+                    if (initialWord === currentWord) {
+                        res(null);
+                    }
 
-               res(words);
-            }, 0)
-        })
+                    res(`${initialWord} ${currentWord}`);
+                }, 0);
+            });
+
+            words.push(promise);
+        });
+
+        return words;
     }
 }
