@@ -6,7 +6,7 @@ const config = {
     entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, ''),
-        filename: 'main.[hash].bundle.js',
+        filename: 'main.bundle.js',
     },
     resolve: {
         extensions: [' ', '.html', '.ts', '.js', 'scss'],
