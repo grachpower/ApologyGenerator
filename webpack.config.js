@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //installed via npm
 const { CheckerPlugin } = require('awesome-typescript-loader');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const config = {
     entry: './src/index.ts',
@@ -35,6 +36,11 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({template: './src/index.html'}),
+
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true,
+        }),
 
         new CheckerPlugin(),
     ],
