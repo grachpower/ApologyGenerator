@@ -62,7 +62,7 @@ export class ApologiesService {
             const promise =  new Promise<string>(res => {
                 setTimeout(_ => {
                     if (initialWord === currentWord) {
-                        res(null);
+                        res('');
                     }
 
                     res(`${initialWord} ${currentWord}`);

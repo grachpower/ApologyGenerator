@@ -9,6 +9,7 @@
     "sourceMap": true,
     "noEmitHelpers": true,
     "importHelpers": true,
+    "allowJs": true,
     "strictNullChecks": false,
     "lib": [
       "dom",
@@ -16,7 +17,7 @@
       "es2015",
       "es2017"
     ],
-    "baseUrl": "./src",
+    "baseUrl": "/",
     "typeRoots": [
       "node_modules/@types"
     ],
