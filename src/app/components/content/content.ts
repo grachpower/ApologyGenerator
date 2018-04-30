@@ -39,9 +39,9 @@ export class Content extends Component {
     public setHandlers(): void {
         const buttonListener = document.querySelector(`[${this.getControlHashByName('generate-button')}]`)
             .addEventListener('click', () => {
-                setTimeout( () => this.isLoading = true);
-                setTimeout( () => this.apologies = []);
-                setTimeout(() => this.render(), 0);
+                this.isLoading = true;
+                this.apologies = [];
+                this.render();
 
                 this.apologiesService
                     .generateApologies()
