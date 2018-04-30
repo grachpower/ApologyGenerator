@@ -1,18 +1,23 @@
-self.addEventListener("install", event => {
-    console.log("Installed");
+const CACHE_NAME = 'cache-v1';
+const urlsToCache = [
+    '/',
+    '/main.bundle.js',
+    'index.html',
+];
 
+self.addEventListener('install', function(event) {
+    // Perform install steps
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache =>
-                fetch("assets-manifest.json")
-                    .then(response => response.json())
-                    .then(assets =>
-                        cache.addAll([
-                            "/",
-                            assets["main.js"],
-                            "http://api.example.com/articles",
-                        ])
-                    )
-            ).then(() => self.skipWaiting())
+            .then(function(cache) {
+                console.log('Opened cache');
+                return cache.addAll(urlsToCache);
+            })
+    );
+});
+
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+        caches.match(event.request)
     );
 });
