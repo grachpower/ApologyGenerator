@@ -1,8 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //installed via npm
 const { CheckerPlugin } = require('awesome-typescript-loader');
-const DefinePlugin = require('webpack/lib/DefinePlugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest')
+
+const cache_ver = new Date().getTime();
 
 const config = {
     entry: './src/index.ts',
@@ -38,8 +40,8 @@ const config = {
     plugins: [
         new HtmlWebpackPlugin({template: './src/index.html'}),
 
-        new DefinePlugin({
-            'SW_CACHE': `SW_CACHE_${new Date().toDateString()}`,
+        new webpack.DefinePlugin({
+            'SW_CACHE': JSON.stringify(`SW_CACHE_${cache_ver}`),
         }),
 
         new CheckerPlugin(),
@@ -49,6 +51,7 @@ const config = {
             short_name: 'Apologiser',
             description: 'Simple way to generate 1000 different apologies',
             background_color: '#ffffff',
+            ios: true,
             orientation: "portrait",
             display: "standalone",
             icons: [
