@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cache-v2';
+const CACHE_NAME = 'cache-v3';
 const urlsToCache = [
     '/',
     '/main.bundle.js',
