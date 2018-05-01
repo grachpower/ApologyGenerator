@@ -51,7 +51,10 @@ const config = {
             short_name: 'Apologiser',
             description: 'Simple way to generate 1000 different apologies',
             background_color: '#ffffff',
-            ios: true,
+            ios: {
+                'apple-mobile-web-app-title': 'Apologiser',
+                'apple-mobile-web-app-status-bar-style': 'white',
+            },
             orientation: "portrait",
             display: "standalone",
             icons: [
