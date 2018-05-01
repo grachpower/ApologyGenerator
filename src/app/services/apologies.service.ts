@@ -59,17 +59,16 @@ export class ApologiesService {
         const words = [];
 
         wordsToAppy.forEach(currentWord => {
-            const promise =  new Promise<string>(res => {
-                setTimeout(_ => {
-                    if (initialWord === currentWord) {
-                        res('');
-                    }
+            if (initialWord !== currentWord) {
+                const promise =  new Promise<string>(res => {
+                    setTimeout(_ => {
 
-                    res(`${initialWord} ${currentWord}`);
-                }, 0);
-            });
+                        res(`${initialWord} ${currentWord}`);
+                    }, 0);
+                });
 
-            words.push(promise);
+                words.push(promise);
+            }
         });
 
         return words;
