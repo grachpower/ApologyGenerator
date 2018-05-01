@@ -11,4 +11,12 @@
    &:hover, &:focus {
      background-color: #2832ee;
    }
+
+  &[disabled] {
+    background-color: #808080;
+
+    &:hover, &:focus {
+      background-color: #808080;
+    }
+  }
 }

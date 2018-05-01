@@ -1,5 +1,6 @@
 import { Component } from "racquetjs";
 import './content.scss';
+import { Clipboard } from 'ts-clipboard';
 
 import { ApologiesList } from "../apoliges-list/apologies-list";
 import { ApologiesService } from "../../services/apologies.service";
@@ -18,7 +19,14 @@ export class Content extends Component {
         return `
             <main class="content">
                 <div class="container">
-                    <button class="generate-button" ${this.addControlByName('generate-button')}>GENERATE</button>
+                    ${this.apologies.length > 0
+                        ? `<button class="generate-button" ${this.addControlByName('generate-button')}>REROLL</button>`
+                        : `<button class="generate-button" ${this.addControlByName('generate-button')}>GENERATE</button>`
+                    }               
+                    ${this.apologies.length > 0
+                        ? `<button class="generate-button" ${this.addControlByName('copy-button')}>COPY</button>`
+                        : `<button class="generate-button" disabled ${this.addControlByName('copy-button')}>COPY</button>`
+                    }
                     ${this.createChild(new ApologiesList(this.apologies))}
                     ${this.isLoading
                         ? this.createChild(new Loader())
@@ -49,5 +57,10 @@ export class Content extends Component {
                     .then(_ => this.isLoading = false)
                     .then(_ => this.render());
             });
+
+        const copyButtonListener = document.querySelector(`[${this.getControlHashByName('copy-button')}]`)
+            .addEventListener('click', this.clickCopyHandler);
     }
+
+    public clickCopyHandler = (event: Event) => Clipboard.copy(this.apologies.join(' '));
 }

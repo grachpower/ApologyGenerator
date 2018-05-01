@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cache-v1';
+const CACHE_NAME = 'cache-v2';
 const urlsToCache = [
     '/',
     '/main.bundle.js',
@@ -13,11 +13,5 @@ self.addEventListener('install', function(event) {
                 console.log('Opened cache');
                 return cache.addAll(urlsToCache);
             })
-    );
-});
-
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches.match(event.request)
     );
 });
