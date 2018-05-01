@@ -25,7 +25,7 @@ export class Content extends Component {
                     }               
                     ${this.apologies.length > 0
                         ? `<button class="generate-button" ${this.addControlByName('copy-button')}>COPY</button>`
-                        : `<button class="generate-button" disabled ${this.addControlByName('copy-button')}>COPY</button>`
+                        : `<button class="generate-button" disabled ${this.addControlByName('copy-button')}>COPY 50</button>`
                     }
                     ${this.createChild(new ApologiesList(this.apologies))}
                     ${this.isLoading
@@ -62,5 +62,5 @@ export class Content extends Component {
             .addEventListener('click', this.clickCopyHandler);
     }
 
-    public clickCopyHandler = (event: Event) => Clipboard.copy(this.apologies.join(' '));
+    public clickCopyHandler = (event: Event) => Clipboard.copy(this.apologies.slice(0, 50).join(' '));
 }
