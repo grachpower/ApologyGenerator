@@ -24,7 +24,7 @@ export class Content extends Component {
                         : `<button class="generate-button" ${this.addControlByName('generate-button')}>GENERATE</button>`
                     }               
                     ${this.apologies.length > 0
-                        ? `<button class="generate-button" ${this.addControlByName('copy-button')}>COPY</button>`
+                        ? `<button class="generate-button" ${this.addControlByName('copy-button')}>COPY 50</button>`
                         : `<button class="generate-button" disabled ${this.addControlByName('copy-button')}>COPY 50</button>`
                     }
                     ${this.createChild(new ApologiesList(this.apologies))}
